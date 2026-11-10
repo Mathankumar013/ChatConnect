@@ -18,6 +18,7 @@ const middleware = require('./middleware/auth');
 // CORS configuration
 const allowedOrigins = [
     'http://localhost:5173',
+    'null',
     process.env.CORS_PORT
 ].filter(Boolean);
 
