@@ -1,0 +1,362 @@
+/* ==========================================================================
+   ChatConnect - Modern Real-Time Chat Application (WhatsApp-Inspired UI)
+   Stylesheet: responsive.css (Mobile, Tablet, Desktop Media Queries)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Tablet Breakpoint (768px to 1023px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1023px) and (min-width: 768px) {
+  :root {
+    --sidebar-width: 320px;
+  }
+
+  .sidebar {
+    width: 320px;
+    min-width: 280px;
+  }
+
+  .conversation-item {
+    padding: 10px 12px;
+  }
+
+  .conversation-avatar-wrap {
+    width: 44px;
+    height: 44px;
+    margin-right: 10px;
+  }
+
+  .chat-messages-container {
+    padding: 14px 3% 14px 3%;
+  }
+
+  .message-bubble {
+    max-width: 75%;
+  }
+
+  .welcome-illustration {
+    width: 220px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. Mobile Breakpoint (Below 768px) - WhatsApp Mobile Experience
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  html, body {
+    height: 100%;
+    position: fixed;
+    width: 100%;
+  }
+
+  /* Full Screen Mobile Container */
+  .app-container {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+  }
+
+  .app-header-strip {
+    display: none; /* Mobile has native-style top header */
+  }
+
+  .app-window {
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* 2.1 Mobile View Mode Toggles */
+  /* By default on mobile: Show Sidebar (Conversation List), Hide Chat */
+  .sidebar {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    height: 100%;
+    border-right: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    padding-bottom: 58px; /* space for mobile bottom nav */
+  }
+
+  .chat-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+    transform: translateX(100%);
+    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* When a chat is active on mobile */
+  .app-window.mobile-chat-active .sidebar {
+    transform: translateX(-25%);
+    pointer-events: none;
+  }
+
+  .app-window.mobile-chat-active .chat-area {
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  /* 2.2 Mobile Sidebar Top Header */
+  .sidebar-header {
+    background-color: var(--primary-green);
+    color: #FFFFFF;
+    height: 58px;
+    padding: 0 16px;
+    border-bottom: none;
+  }
+
+  .sidebar-header .brand-title {
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .sidebar-header .brand-title i {
+    color: #FFFFFF;
+  }
+
+  .sidebar-header .icon-btn {
+    color: #FFFFFF;
+  }
+
+  .sidebar-header .icon-btn:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #FFFFFF;
+  }
+
+  .user-avatar-wrap {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Search & Filter pills adjustments */
+  .sidebar-search-box {
+    padding: 8px 12px;
+    background-color: var(--card-bg);
+  }
+
+  .search-input-wrapper {
+    background-color: var(--panel-header-bg);
+    border-radius: var(--radius-full);
+  }
+
+  .sidebar-filters {
+    padding: 8px 12px;
+  }
+
+  .filter-pill {
+    padding: 5px 12px;
+    font-size: 12.5px;
+  }
+
+  /* 2.3 Mobile Conversation List Items */
+  .conversation-item {
+    padding: 12px 14px;
+  }
+
+  .conversation-avatar-wrap {
+    width: 50px;
+    height: 50px;
+  }
+
+  .conversation-name {
+    font-size: 16px;
+  }
+
+  .conversation-last-msg {
+    font-size: 13.5px;
+  }
+
+  /* 2.4 Mobile Bottom Navigation Bar (WhatsApp Mobile) */
+  .mobile-bottom-nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 58px;
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 30;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .nav-tab-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    font-size: 11px;
+    color: var(--text-secondary);
+    position: relative;
+    cursor: pointer;
+    flex: 1;
+    padding: 6px 0;
+  }
+
+  .nav-tab-item i {
+    font-size: 19px;
+  }
+
+  .nav-tab-item.active {
+    color: var(--primary-green);
+    font-weight: 600;
+  }
+
+  [data-theme="dark"] .nav-tab-item.active {
+    color: var(--accent-green);
+  }
+
+  .nav-tab-badge {
+    position: absolute;
+    top: 4px;
+    right: calc(50% - 18px);
+    background-color: var(--badge-bg);
+    color: var(--badge-text);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 5px;
+    border-radius: var(--radius-full);
+  }
+
+  /* Floating Action Button (FAB) for New Chat on Mobile */
+  .mobile-fab-new-chat {
+    position: absolute;
+    bottom: 74px;
+    right: 18px;
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-full);
+    background-color: var(--accent-green);
+    color: #FFFFFF;
+    font-size: 22px;
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 25;
+    cursor: pointer;
+    transition: transform var(--transition-fast), background-color var(--transition-fast);
+  }
+
+  .mobile-fab-new-chat:hover, .mobile-fab-new-chat:active {
+    transform: scale(1.08);
+    background-color: var(--secondary-green);
+  }
+
+  /* 2.5 Mobile Chat Screen */
+  .chat-header {
+    background-color: var(--panel-header-bg);
+    height: 58px;
+    padding: 0 10px;
+  }
+
+  .chat-back-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: var(--text-primary);
+  }
+
+  .chat-header-avatar-wrap {
+    width: 36px;
+    height: 36px;
+  }
+
+  .chat-header-actions .icon-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  .chat-messages-container {
+    padding: 10px 10px 10px 10px;
+  }
+
+  .message-bubble {
+    max-width: 82%;
+    font-size: 14px;
+  }
+
+  /* Mobile Message Input Bar */
+  .chat-input-bar {
+    padding: 6px 8px;
+    min-height: 54px;
+    gap: 6px;
+    padding-bottom: calc(6px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .chat-input-actions .icon-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 17px;
+  }
+
+  .send-action-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  /* Emoji Picker & Attachment Menu on Mobile */
+  .emoji-picker-container {
+    width: 94%;
+    left: 3%;
+    right: 3%;
+    bottom: 60px;
+  }
+
+  .attachment-menu {
+    left: 10px;
+    bottom: 60px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Welcome Screen on Mobile (hidden when chat opened) */
+  .welcome-screen {
+    display: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. Small Mobile Phones (iPhone SE, Galaxy A-series <= 380px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 380px) {
+  .chat-header-actions {
+    gap: 2px;
+  }
+
+  .chat-header-name {
+    font-size: 14px;
+  }
+
+  .message-bubble {
+    max-width: 88%;
+  }
+
+  .sidebar-filters {
+    gap: 4px;
+  }
+
+  .filter-pill {
+    padding: 4px 10px;
+    font-size: 11.5px;
+  }
+}
+

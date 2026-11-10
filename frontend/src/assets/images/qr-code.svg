@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <rect width="300" height="300" fill="#FFFFFF"/>
+  <!-- Top-Left Finder Pattern -->
+  <rect x="25" y="25" width="65" height="65" fill="#111B21" rx="8"/>
+  <rect x="35" y="35" width="45" height="45" fill="#FFFFFF" rx="4"/>
+  <rect x="43" y="43" width="29" height="29" fill="#111B21" rx="4"/>
+  <!-- Top-Right Finder Pattern -->
+  <rect x="210" y="25" width="65" height="65" fill="#111B21" rx="8"/>
+  <rect x="220" y="35" width="45" height="45" fill="#FFFFFF" rx="4"/>
+  <rect x="228" y="43" width="29" height="29" fill="#111B21" rx="4"/>
+  <!-- Bottom-Left Finder Pattern -->
+  <rect x="25" y="210" width="65" height="65" fill="#111B21" rx="8"/>
+  <rect x="35" y="220" width="45" height="45" fill="#FFFFFF" rx="4"/>
+  <rect x="43" y="228" width="29" height="29" fill="#111B21" rx="4"/>
+
+  <!-- Timing Patterns -->
+  <g fill="#111B21">
+    <rect x="98" y="52" width="10" height="10"/>
+    <rect x="118" y="52" width="10" height="10"/>
+    <rect x="138" y="52" width="10" height="10"/>
+    <rect x="158" y="52" width="10" height="10"/>
+    <rect x="178" y="52" width="10" height="10"/>
+    <rect x="198" y="52" width="10" height="10"/>
+
+    <rect x="52" y="98" width="10" height="10"/>
+    <rect x="52" y="118" width="10" height="10"/>
+    <rect x="52" y="138" width="10" height="10"/>
+    <rect x="52" y="158" width="10" height="10"/>
+    <rect x="52" y="178" width="10" height="10"/>
+    <rect x="52" y="198" width="10" height="10"/>
+  </g>
+
+  <!-- Data Modules Grid -->
+  <g fill="#111B21">
+    <rect x="100" y="25" width="14" height="14"/>
+    <rect x="122" y="25" width="14" height="14"/>
+    <rect x="150" y="25" width="14" height="14"/>
+    <rect x="178" y="25" width="14" height="14"/>
+
+    <rect x="100" y="75" width="14" height="14"/>
+    <rect x="136" y="75" width="14" height="14"/>
+    <rect x="164" y="75" width="14" height="14"/>
+    <rect x="192" y="75" width="14" height="14"/>
+
+    <rect x="25" y="100" width="14" height="14"/>
+    <rect x="75" y="100" width="14" height="14"/>
+    <rect x="110" y="100" width="14" height="14"/>
+    <rect x="138" y="100" width="14" height="14"/>
+    <rect x="180" y="100" width="14" height="14"/>
+    <rect x="210" y="100" width="14" height="14"/>
+    <rect x="240" y="100" width="14" height="14"/>
+    <rect x="260" y="100" width="14" height="14"/>
+
+    <rect x="25" y="122" width="14" height="14"/>
+    <rect x="68" y="122" width="14" height="14"/>
+    <rect x="95" y="122" width="14" height="14"/>
+    <rect x="192" y="122" width="14" height="14"/>
+    <rect x="220" y="122" width="14" height="14"/>
+    <rect x="248" y="122" width="14" height="14"/>
+
+    <rect x="25" y="150" width="14" height="14"/>
+    <rect x="80" y="150" width="14" height="14"/>
+    <rect x="192" y="150" width="14" height="14"/>
+    <rect x="220" y="150" width="14" height="14"/>
+    <rect x="260" y="150" width="14" height="14"/>
+
+    <rect x="25" y="178" width="14" height="14"/>
+    <rect x="75" y="178" width="14" height="14"/>
+    <rect x="105" y="178" width="14" height="14"/>
+    <rect x="180" y="178" width="14" height="14"/>
+    <rect x="210" y="178" width="14" height="14"/>
+    <rect x="238" y="178" width="14" height="14"/>
+
+    <rect x="100" y="210" width="14" height="14"/>
+    <rect x="128" y="210" width="14" height="14"/>
+    <rect x="156" y="210" width="14" height="14"/>
+    <rect x="184" y="210" width="14" height="14"/>
+    <rect x="210" y="210" width="14" height="14"/>
+    <rect x="240" y="210" width="14" height="14"/>
+
+    <rect x="100" y="238" width="14" height="14"/>
+    <rect x="136" y="238" width="14" height="14"/>
+    <rect x="164" y="238" width="14" height="14"/>
+    <rect x="192" y="238" width="14" height="14"/>
+    <rect x="220" y="238" width="14" height="14"/>
+    <rect x="260" y="238" width="14" height="14"/>
+
+    <rect x="100" y="260" width="14" height="14"/>
+    <rect x="128" y="260" width="14" height="14"/>
+    <rect x="175" y="260" width="14" height="14"/>
+    <rect x="205" y="260" width="14" height="14"/>
+    <rect x="245" y="260" width="14" height="14"/>
+  </g>
+
+  <!-- Center Logo Emblem Badge (WhatsApp Web Style) -->
+  <rect x="120" y="120" width="60" height="60" fill="#FFFFFF" rx="12"/>
+  <circle cx="150" cy="150" r="24" fill="#128C7E"/>
+  <path d="M150 134C141.16 134 134 141.16 134 150C134 153.3 135.03 156.36 136.78 158.91L135 165L141.25 163.36C143.83 164.95 146.82 166 150 166C158.84 166 166 158.84 166 150C166 141.16 158.84 134 150 134Z" fill="#FFFFFF"/>
+</svg>
+
