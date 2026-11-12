@@ -92,10 +92,12 @@ app.set('io', io);
 const activeUsers = new Map();
 
 // Socket.IO connection
+
 io.on('connection', (socket) => {
 
     const userId = String(socket.userId);
 
+    // Join private user room
     socket.join(userId);
 
     console.log('User connected:', userId);
@@ -108,6 +110,114 @@ io.on('connection', (socket) => {
 
     io.emit('onlineUsers', Array.from(activeUsers.keys()));
 
+    // ==================================
+    // 1. USER A CALLS USER B
+    // ==================================
+    socket.on('call-user', ({ toUserId, callType }) => {
+
+        if (!toUserId || !['video', 'audio'].includes(callType)) {
+            return;
+        }
+
+        const receiverId = String(toUserId);
+
+        if (!activeUsers.has(receiverId)) {
+            socket.emit('call-unavailable', {
+                message: 'User is offline'
+            });
+            return;
+        }
+
+        io.to(receiverId).emit('incoming-call', {
+            fromUserId: userId,
+            callType
+        });
+
+        console.log(`${userId} is calling ${receiverId}`);
+    });
+
+    // ==================================
+    // 2. USER B ACCEPTS THE CALL
+    // ==================================
+    socket.on('accept-call', ({ toUserId }) => {
+
+        if (!toUserId) return;
+
+        io.to(String(toUserId)).emit('call-accepted', {
+            fromUserId: userId
+        });
+
+        console.log(`${userId} accepted the call`);
+    });
+
+    // ==================================
+    // 3. USER B REJECTS THE CALL
+    // ==================================
+    socket.on('reject-call', ({ toUserId }) => {
+
+        if (!toUserId) return;
+
+        io.to(String(toUserId)).emit('call-rejected', {
+            fromUserId: userId
+        });
+    });
+
+    // ==================================
+    // 4. WEBRTC OFFER
+    // ==================================
+    socket.on('webrtc-offer', ({ toUserId, offer }) => {
+
+        if (!toUserId || !offer) return;
+
+        io.to(String(toUserId)).emit('webrtc-offer', {
+            fromUserId: userId,
+            offer
+        });
+    });
+
+    // ==================================
+    // 5. WEBRTC ANSWER
+    // ==================================
+    socket.on('webrtc-answer', ({ toUserId, answer }) => {
+
+        if (!toUserId || !answer) return;
+
+        io.to(String(toUserId)).emit('webrtc-answer', {
+            fromUserId: userId,
+            answer
+        });
+    });
+
+    // ==================================
+    // 6. ICE CANDIDATE
+    // ==================================
+    socket.on('ice-candidate', ({ toUserId, candidate }) => {
+
+        if (!toUserId || !candidate) return;
+
+        io.to(String(toUserId)).emit('ice-candidate', {
+            fromUserId: userId,
+            candidate
+        });
+    });
+
+    // ==================================
+    // 7. END CALL
+    // ==================================
+    socket.on('end-call', ({ toUserId }) => {
+
+        if (!toUserId) return;
+
+        io.to(String(toUserId)).emit('end-call', {
+            fromUserId: userId
+        });
+
+        console.log(`${userId} ended the call`);
+    });
+
+    // ==================================
+    // 8. USER DISCONNECT
+    // ==================================
     socket.on('disconnect', async () => {
 
         const connections = activeUsers.get(userId);
@@ -115,6 +225,7 @@ io.on('connection', (socket) => {
         console.log('User disconnected:', userId);
 
         if (connections) {
+
             connections.delete(socket.id);
 
             if (connections.size === 0) {
@@ -134,6 +245,7 @@ io.on('connection', (socket) => {
 
         io.emit('onlineUsers', Array.from(activeUsers.keys()));
     });
+
 });
 
 // Render port
